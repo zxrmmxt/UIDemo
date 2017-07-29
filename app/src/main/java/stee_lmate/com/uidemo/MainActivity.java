@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    //继承View的自定义控件方式
     public void customizeView(View view){
         startActivity(new Intent(this,CustomizeViewActivity.class));
     }

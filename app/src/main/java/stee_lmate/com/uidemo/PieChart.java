@@ -2,16 +2,21 @@ package stee_lmate.com.uidemo;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Scroller;
 
 /**
  * Created by xuti on 2017/7/28.
  */
 
 public class PieChart extends View {
-    private final boolean mShowText;
-    private final int mTextPos;
+    private boolean mShowText;
+    private int mTextPos;
+    private Paint mTextPaint;
 
     public PieChart(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -26,5 +31,40 @@ public class PieChart extends View {
         } finally {
             a.recycle();
         }
+//        test();
     }
+
+    private void test() {
+        resolveSizeAndState(0,0,0);
+        setMeasuredDimension(0,0);
+//        LinearGradient shader = new LinearGradient();
+//        mTextPaint.setShader(shader);
+        new GestureDetector.SimpleOnGestureListener(){
+            @Override
+            public boolean onDown(MotionEvent e) {
+                return super.onDown(e);
+            }
+
+            @Override
+            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                Scroller scroller = new Scroller(getContext());
+                scroller.fling(0,0,0,0,0,0,0,0);
+                return super.onFling(e1, e2, velocityX, velocityY);
+            }
+        };
+    }
+
+    public boolean isShowText() {
+        return mShowText;
+    }
+
+    public void setShowText(boolean showText) {
+        mShowText = showText;
+        invalidate();
+        requestLayout();
+    }
+
+
+
+
 }
